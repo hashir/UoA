@@ -32,12 +32,12 @@ EOF;
         $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
         // add your code here
-       // $this->youtubeEntry();
+        $this->youtubeEntry();
         $this->twitterEntry();
     }
     
     function twitterEntry(){
-        include "lib/vendor/Zend/Loader.php";
+        require_once 'lib/vendor/Zend/Loader.php';
         $username = "uoatest7";
         Zend_Loader::loadClass("Zend_Http_Client");
         //Zend_Loader::loadClass("Zend_Validate_Hostname");
@@ -51,11 +51,10 @@ EOF;
         $tweetsXmml = simplexml_load_string($tweets);
         foreach($tweetsXmml->status as $tweet)
         {
-//           print_r($tweet);//// do whatever you want with this $tweet
+//           print_r($tweet);
 //           echo $tweet->text;
             $entries = new Entries();
             $entries->setSource('TWITTER');
-//            $entries->setName($videoEntry->getVideoTitle());
             $entries->setStory($tweet->text);
             $entries->save();
             
@@ -103,24 +102,30 @@ EOF;
     function printVideoEntry($videoEntry) {
             // the videoEntry object contains many helper functions
             // that access the underlying mediaGroup object
-//            echo 'Video: ' . $videoEntry->getVideoTitle() . "<br />";
+            //echo 'Video: ' . $videoEntry->getVideoTitle() . "<br />";
             //echo 'Video ID: ' . $videoEntry->getVideoId() . "<br />";
             //echo 'Updated: ' . $videoEntry->getUpdated() . "<br />";
-//            echo 'Description: ' . $videoEntry->getVideoDescription() . "<br />";
+            //echo 'Description: ' . $videoEntry->getVideoDescription() . "<br />";
             //echo 'Category: ' . $videoEntry->getVideoCategory() . "<br />";
             //echo 'Tags: ' . implode(", ", $videoEntry->getVideoTags()) . "<br />";
-//            echo 'Watch page: ' . $videoEntry->getVideoWatchPageUrl() . "<br />";
-//            echo 'Flash Player Url: ' . $videoEntry->getFlashPlayerUrl() . "<br />";
-//            echo 'Duration: ' . $videoEntry->getVideoDuration() . "<br />";
+            //echo 'Watch page: ' . $videoEntry->getVideoWatchPageUrl() . "<br />";
+            //echo 'Flash Player Url: ' . $videoEntry->getFlashPlayerUrl() . "<br />";
+            //echo 'Duration: ' . $videoEntry->getVideoDuration() . "<br />";
             //echo 'View count: ' . $videoEntry->getVideoViewCount() . "<br />";
             //echo 'Rating: ' . $videoEntry->getVideoRatingInfo() . "<br />";
             //echo 'Geo Location: ' . $videoEntry->getVideoGeoLocation() . "<br />";
             //echo 'Recorded on: ' . $videoEntry->getVideoRecorded() . "<br />";                   
-            
+            $videoThumbnails = $videoEntry->getVideoThumbnails();
+
+            foreach($videoThumbnails as $videoThumbnail) {
+                $img_url = $videoThumbnail['url'];
+               break;  
+            }
             $entries = new Entries();
             $entries->setSource('YOUTUBE');
             $entries->setName($videoEntry->getVideoTitle());
             $entries->setStory($videoEntry->getFlashPlayerUrl());
+            $entries->setImageUrl($img_url);
             $entries->save();
         }
 

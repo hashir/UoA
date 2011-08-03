@@ -1,34 +1,10 @@
-# Your additional tables live here
-#Entries:
-#  columns:
-#    name: {type: string(255), notnull: true}
-#    email: {type: string(255), notnull:true, email:true}
-#    photo: {type: string(255)}
-#    story: {type: clob, notnull: true}
-#    auth_publish: {type: boolean, notnull: true}
-#    auth_contact: {type: boolean}
-#    notify_publish: {type: boolean}
-#  actAs:
-#    Timestampable: ~
-##[11:48:08 AM] zuhair.como: 
-#Entries:
-#  columns:
-#    name: {type: string(255), notnull: true}
-#    email: {type: string(255), notnull:true, email:true}
-#    photo: {type: string(255)}
-#    story: {type: clob, notnull: true}
-#    auth_publish: {type: boolean, notnull: true}
-#    auth_contact: {type: boolean}
-#    notify_publish: {type: boolean}
-#  actAs:
-#    Timestampable: ~
-#[11:50:34 AM] zuhair.como: 
 Entries:
   columns:
     name: {type: string(255), notnull: true}
     email: {type: string(255), notnull:true, email:true}
     photo: {type: string(255)}
     story: {type: clob, notnull: true}
+    image_url: {type: string(255)}
     auth_publish: {type: boolean, notnull: true}
     auth_contact: {type: boolean}
     notify_publish: {type: boolean}

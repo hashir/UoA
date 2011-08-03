@@ -9,6 +9,7 @@
  * @property string $email
  * @property string $photo
  * @property clob $story
+ * @property string $image_url
  * @property boolean $auth_publish
  * @property boolean $auth_contact
  * @property boolean $notify_publish
@@ -19,6 +20,7 @@
  * @method string  getEmail()          Returns the current record's "email" value
  * @method string  getPhoto()          Returns the current record's "photo" value
  * @method clob    getStory()          Returns the current record's "story" value
+ * @method string  getImageUrl()       Returns the current record's "image_url" value
  * @method boolean getAuthPublish()    Returns the current record's "auth_publish" value
  * @method boolean getAuthContact()    Returns the current record's "auth_contact" value
  * @method boolean getNotifyPublish()  Returns the current record's "notify_publish" value
@@ -28,6 +30,7 @@
  * @method Entries setEmail()          Sets the current record's "email" value
  * @method Entries setPhoto()          Sets the current record's "photo" value
  * @method Entries setStory()          Sets the current record's "story" value
+ * @method Entries setImageUrl()       Sets the current record's "image_url" value
  * @method Entries setAuthPublish()    Sets the current record's "auth_publish" value
  * @method Entries setAuthContact()    Sets the current record's "auth_contact" value
  * @method Entries setNotifyPublish()  Sets the current record's "notify_publish" value
@@ -62,6 +65,10 @@ abstract class BaseEntries extends sfDoctrineRecord
         $this->hasColumn('story', 'clob', null, array(
              'type' => 'clob',
              'notnull' => true,
+             ));
+        $this->hasColumn('image_url', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
         $this->hasColumn('auth_publish', 'boolean', null, array(
              'type' => 'boolean',

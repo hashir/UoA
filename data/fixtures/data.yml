@@ -1,0 +1,30 @@
+Entries:
+<?php for ($i = 1; $i <= 100; $i++): ?>
+  Entries_<?php echo $i ?>:
+    name: aa<?php echo $i."\n" ?>
+    email: aa
+    photo: null
+    story: 'These are stories told by people just like you. People who have or will make a lasting impact on the world. How big or small the impact may be is irrelevant. What matters is that we shine light on it and inspire others to do the same. That’s what this site is for.'
+    image_url: <?php echo ($i%14).".jpg \n" ?>
+    auth_publish: true
+    auth_contact: false
+    notify_publish: true
+    approved: null
+    source: DIRECT
+    created_at: '2011-08-02 16:11:47'
+    updated_at: '2011-08-02 16:11:47'
+ 
+<?php endfor; ?>
+  Entries_101:
+    name: Bennet
+    email: bennet@comogroupap.com
+    photo: null
+    story: ''
+    image_url: 'plus.jpg'
+    auth_publish: true
+    auth_contact: false
+    notify_publish: true
+    approved: null
+    source: DIRECT
+    created_at: '2011-08-02 16:11:47'
+    updated_at: '2011-08-02 16:11:47'
